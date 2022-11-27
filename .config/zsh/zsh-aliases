@@ -1,0 +1,37 @@
+#!/bin/sh
+
+# Alias for directories
+alias 5="cd ~/sem5"
+alias 4="cd ~/sem4"
+alias r="cd ~/research"
+alias d="cd ~/Downloads"
+
+# Alias for commands
+alias f="nemo ."
+alias l="ls"
+alias z="zathura"
+alias jl="jupyter-lab"
+alias zsh-update-plugins="find "$ZDOTDIR/plugins" -type d -exec test -e '{}/.git' ';' -print0 | xargs -I {} -0 git -C {} pull -q"
+alias vim="nvim"
+
+# Colorize grep output (good for log files)
+alias grep='grep --color=auto'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+
+# confirm before overwriting something
+alias cp="cp -i"
+alias mv='mv -i'
+alias rm='rm -i'
+
+# easier to read disk
+alias df='df -h'     # human-readable sizes
+alias free='free -m' # show sizes in MB
+
+# if [[ $TERM == "xterm-kitty" ]]; then
+#   alias ssh="kitty +kitten ssh"
+# fi
+
+alias ls='ls --color=auto'
+
+alias config='/usr/bin/git --git-dir=/home/shikhar/.cfg/ --work-tree=/home/shikhar'

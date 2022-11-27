@@ -1,0 +1,4 @@
+MAVEN="/home/shikhar/apache-maven-3.8.5/bin"
+TERMINAL="alacritty"
+#CONDA="/opt/miniconda3/bin"
+export PATH="$MAVEN:$TERMINAL:$PATH:$CONDA"

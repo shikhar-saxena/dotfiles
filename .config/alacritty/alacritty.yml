@@ -1,0 +1,83 @@
+window:
+  #decorations: None 
+  padding:
+    x: 5
+    y: 5
+  class:
+    instance: Alacritty
+    general: Alacritty
+  opacity: 0.98
+
+scrolling:
+  history: 10000
+  multiplier: 3
+
+font:
+  size: 10.0
+  normal:
+    family: Iosevka
+    style: Regular
+  bold:
+    family: Iosevka
+    #family: JetBrains Mono NL
+    style: Bold
+  italic:
+    family: Iosevka
+    #family: JetBrains Mono NL
+    style: Italic
+  bold_italic:
+    family: Iosevka
+    #family: JetBrains Mono NL
+    style: Bold Italic
+
+draw_bold_text_with_bright_colors: true
+
+cursor:
+  style:
+    shape: Beam
+    blinking: On
+
+selection:
+  save_to_clipboard: false
+
+live_config_reload: true
+
+key_bindings:
+  - { key: T, mods: Control|Shift, action: SpawnNewInstance }
+  - { key: W, mods: Control|Shift, action: Quit }
+
+# Github dark default theme
+# projekt0n/github-theme-contrib
+# github Alacritty Colors
+colors:
+  # Default colors
+  primary:
+    background: '0x0d1117'
+    foreground: '0xb3b1ad'
+
+  # Normal colors
+  normal:
+    black:   '0x484f58'
+    red:     '0xff7b72'
+    green:   '0x3fb950'
+    yellow:  '0xd29922'
+    blue:    '0x58a6ff'
+    magenta: '0xbc8cff'
+    cyan:    '0x39c5cf'
+    white:   '0xb1bac4'
+
+  # Bright colors
+  bright:
+    black:   '0x6e7681'
+    red:     '0xffa198'
+    green:   '0x56d364'
+    yellow:  '0xe3b341'
+    blue:    '0x79c0ff'
+    magenta: '0xd2a8ff'
+    cyan:    '0x56d4dd'
+    white:   '0xf0f6fc'
+
+  indexed_colors:
+    - { index: 16, color: '0xd18616' }
+    - { index: 17, color: '0xffa198' }
+
