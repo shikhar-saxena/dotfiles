@@ -3,6 +3,7 @@
 # Alias for directories
 alias 5="cd ~/sem5"
 alias 4="cd ~/sem4"
+alias 6="cd ~/sem6"
 alias r="cd ~/research"
 alias d="cd ~/Downloads"
 
@@ -35,3 +36,4 @@ alias free='free -m' # show sizes in MB
 alias ls='ls --color=auto'
 
 alias config='/usr/bin/git --git-dir=/home/shikhar/.cfg/ --work-tree=/home/shikhar'
+alias dotgit='/usr/local/bin/lazygit --git-dir=/home/shikhar/.cfg/ --work-tree=/home/shikhar'

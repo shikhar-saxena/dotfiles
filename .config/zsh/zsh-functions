@@ -1,24 +1,5 @@
 pd() {
-  pandoc "$1" \
-    --standalone \
-    -V fontsize=12pt \
-    -V colorlinks=true \
-    -V linkcolor=blue \
-    -V urlcolor=blue \
-    -V toccolor=blue \
-    -V geometry:left=1.2in \
-    -V geometry:right=1.2in \
-    -V geometry:top=1in \
-    -V geometry:bottom=1in \
-    -V mainfont="Libertinus Serif" \
-    -V monofont="DejaVu Sans Mono" \
-    --pdf-engine=xelatex \
-    -o "$2";
-    #--toc \
-    #--bibliography=biblio.bib \
-    #-V mainfont="Arial" \
-    #--filter pandoc-citeproc \
-    #--csl ieee.csl \
+  pandoc "$1" -o "$2" --metadata-file="$HOME/pandoc.yaml" --pdf-engine=xelatex;
 }
 
 # Function to source files if they exist

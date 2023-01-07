@@ -1,0 +1,26 @@
+documentclass: article
+author:
+- Shikhar Saxena
+geometry:
+- top=1in
+- left=1.2in
+- bottom=1in
+- right=1.2in
+hyperrefoptions:
+- linktoc=all
+toc: true
+linkcolor: blue
+urlcolor: blue
+toccolor: blue
+#linestretch: 1.15 # Setspace package
+#numbersections: true
+mainfont: 'Bitstream Charter'
+fontsize: 12pt
+mathfont: 'Libertinus Math'
+monofont: 'DejaVu Sans Mono'
+graphicx: true
+#header-includes:
+#- |
+  #```{=latex}
+  #\usepackage{graphicx}
+  #```

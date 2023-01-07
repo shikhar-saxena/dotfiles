@@ -15,7 +15,7 @@ focus_follows_mouse no
 # Font for window titles. Will also be used by the bar unless a different font is used in the bar {} block below.
 font pango:Fira Code Medium 14
 
-exec dunst -config ~/.config/dunst/dunstrc
+exec_always dunst -config ~/.config/dunst/dunstrc
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -40,6 +40,7 @@ exec "xautolock -detectsleep -time 15 -locker \"i3lock -c 000000\""
 exec --no-startup-id nm-applet
 
 #exec_always --no-startup-id autotiling
+default_border pixel
 
 exec --no-startup-id picom --experimental-backends -b
 
@@ -207,6 +208,7 @@ bindsym $mod+r mode "resize"
 
 # Wallpaper
 # exec_always feh --bg-fill /usr/share/backgrounds/linuxmint-vanessa/fakurian_purple.jpg
+# exec_always feh --bg-fill /home/shikhar/Pictures/Wallpapers/Fd0JbbnX0AMm5OE.jpeg
 exec_always feh --bg-fill /home/shikhar/Pictures/Wallpapers/4K.jpeg
 # exec_always feh --bg-fill /home/shikhar/Pictures/Wallpapers/282-2823101_kpop-dreamcatcher.jpg
 
@@ -231,6 +233,9 @@ bindsym Ctrl+Shift+Print exec --no-startup-id maim --format=png --select | xclip
 bindsym $mod+z exec --no-startup-id zathura
 bindsym $mod+b exec --no-startup-id blueberry
 bindsym $mod+n exec --no-startup-id nemo
+
+# Fouus Window (for Dunst notifs)
+focus_on_window_activation focus
 
 ## Base16 OneDark
 # Author: Lalit Magant (http://github.com/tilal6991)
@@ -266,6 +271,7 @@ client.background       $base07
 
 for_window [class="Spotify"] move to workspace $ws10
 assign [class="discord"] 9
+assign [class="Blueberry"] 8
 for_window [class="Yad" title="yad-calendar"] floating enable
 
-default_border pixel
+

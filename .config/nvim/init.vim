@@ -40,6 +40,8 @@ set title
 set ttimeoutlen=0
 set wildmenu
 set smartindent
+set ignorecase
+set smartcase
 "set cc=80
 "highlight ColorColumn ctermbg=0 guibg=lightgrey
 
@@ -122,11 +124,20 @@ let g:lightline = {
 " Vimtex
 " ------------------------------------------------
 let g:vimtex_view_method = 'zathura'
-let g:vimtex_quickfix_mode=0
 set conceallevel=1
-let g:tex_conceal='abdmg'
+let g:vimtex_quickfix_mode=0
+let g:vimtex_compiler_progname = 'nvr'
 let g:vimtex_view_general_viewer = 'okular'
 let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
+let g:vimtex_fold_enabled=1
+
+" ------------------------------------------------
+" Vim-Pandoc
+" ------------------------------------------------
+let g:pandoc#spell#enabled = 0
+let g:pandoc#modules#disabled = ["folding"]
+"let g:pandoc#command#autoexec_on_writes = 1
+"let g:pandoc#command#autoexec_command = "Pandoc pdf --metadata-file=~/pandoc.yaml --pdf-engine=xelatex"
 
 " ------------------------------------------------
 " NERDTree
@@ -142,12 +153,6 @@ nnoremap <silent> <C-b> :NERDTreeFind<CR>
 let NERDTreeHighlightCursorline=0
 
 " ------------------------------------------------
-" Vim-Pandoc
-" ------------------------------------------------
-let g:pandoc#spell#enabled = 0
-let g:pandoc#modules#disabled = ["folding"]
-
-" ------------------------------------------------
 " UltiSnips
 " ------------------------------------------------
 let g:UltiSnipsSnippetDirectories = ['~/.config/nvim/UltiSnips', 'UltiSnips']
@@ -161,6 +166,7 @@ let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 let g:wiki_root = '~'
 let g:wiki_filetypes = ['md']
 let g:wiki_link_extension = '.md'
+let g:wiki_viewer = { 'pdf': 'xdg-open' }
 
 " ------------------------------------------------
 " coc
