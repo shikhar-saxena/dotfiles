@@ -14,6 +14,7 @@ alias z="zathura"
 alias jl="jupyter-lab"
 alias zsh-update-plugins="find "$ZDOTDIR/plugins" -type d -exec test -e '{}/.git' ';' -print0 | xargs -I {} -0 git -C {} pull -q"
 alias vim="nvim"
+alias lg="lazygit"
 
 # Colorize grep output (good for log files)
 alias grep='grep --color=auto'
@@ -36,4 +37,4 @@ alias free='free -m' # show sizes in MB
 alias ls='ls --color=auto'
 
 alias config='/usr/bin/git --git-dir=/home/shikhar/.cfg/ --work-tree=/home/shikhar'
-alias dotgit='/usr/local/bin/lazygit --git-dir=/home/shikhar/.cfg/ --work-tree=/home/shikhar'
+alias dg='/usr/local/bin/lazygit --git-dir=/home/shikhar/.cfg/ --work-tree=/home/shikhar'
