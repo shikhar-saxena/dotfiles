@@ -1,7 +1,8 @@
-documentclass: article
+documentclass: article 
 author:
 - Shikhar Saxena
 geometry:
+- a4paper
 - top=1in
 - left=1.2in
 - bottom=1in
@@ -9,18 +10,18 @@ geometry:
 hyperrefoptions:
 - linktoc=all
 toc: true
-linkcolor: blue
+toc-depth: 3
+linkcolor: red 
+citecolor: blue
 urlcolor: blue
-toccolor: blue
-#linestretch: 1.15 # Setspace package
-#numbersections: true
-mainfont: 'Bitstream Charter'
+toccolor: red 
+# linestretch: 1.15 # Setspace package
+# numbersections: true
+# fontenc: T1
 fontsize: 12pt
-mathfont: 'Libertinus Math'
-monofont: 'DejaVu Sans Mono'
+# subparagraph: yes
 graphicx: true
-#header-includes:
-#- |
-  #```{=latex}
-  #\usepackage{graphicx}
-  #```
+mainfont: Libertinus Sans
+# mathfont: Libertinus Math
+mathfontoptions:
+- Scale=1.15

@@ -18,7 +18,10 @@ imap <silent> <Up> <C-o>gk
 nmap <silent> <Down> gj
 nmap <silent> <Up> gk
 
-map <c-`> :w <CR> :!g++ --std=c++17 -O2 % -o %< && ./%< <CR>
+" map <c-`> :w <CR> :!g++ --std=c++17 -O2 % -o %< && ./%< <CR>
+
+command Wo Pandoc! pdf --metadata-file=pandoc.yaml -H pandoc.tex --pdf-engine=xelatex
+map <c-s> <Esc>:w<CR>:Pandoc pdf --metadata-file=pandoc.yaml -H pandoc.tex --pdf-engine=xelatex<CR><CR>
 
 " ------------------------------------------------
 " General Options
@@ -31,6 +34,7 @@ set clipboard^=unnamed,unnamedplus
 set completeopt=noinsert,menuone,noselect
 set hidden
 set mouse=a
+" set virtualedit=all
 " set inccommand=split
 set relativenumber
 set splitbelow splitright
@@ -42,7 +46,7 @@ set wildmenu
 set smartindent
 set ignorecase
 set smartcase
-"set cc=80
+" set cc=80
 "highlight ColorColumn ctermbg=0 guibg=lightgrey
 
 " ------------------------------------------------
@@ -81,28 +85,19 @@ syntax enable
 "  Vim Plug
 " ------------------------------------------------
 call plug#begin()
-
-  "Plug 'neoclide/coc.nvim', {'branch': 'release'}
-  " ------------------------------------------------
-  "  Color Schemes
-  " ------------------------------------------------
-  "Plug 'ghifarit53/tokyonight-vim'
-  "Plug 'morhetz/gruvbox'
-  "Plug 'joshdick/onedark.vim' 
   Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
-  " ------------------------------------------------
-  " Other Plugins
-  " ------------------------------------------------
   Plug 'itchyny/lightline.vim'
   Plug 'scrooloose/nerdtree'
   Plug 'ryanoasis/vim-devicons'
   Plug 'lervag/vimtex'
   Plug 'lervag/wiki.vim'
 	Plug 'sirver/ultisnips'
-  Plug 'projekt0n/github-nvim-theme'
-  Plug 'preservim/nerdcommenter'
+  Plug 'projekt0n/github-nvim-theme', { 'tag': 'v0.0.7' }
+  "Plug 'preservim/nerdcommenter'
+  Plug 'tpope/vim-commentary'
   Plug 'vim-pandoc/vim-pandoc-syntax' 
   Plug 'vim-pandoc/vim-pandoc'
+  Plug 'itchyny/calendar.vim'
 call plug#end()
 
 " ------------------------------------------------
@@ -124,7 +119,7 @@ let g:lightline = {
 " Vimtex
 " ------------------------------------------------
 let g:vimtex_view_method = 'zathura'
-set conceallevel=1
+set conceallevel=2
 let g:vimtex_quickfix_mode=0
 let g:vimtex_compiler_progname = 'nvr'
 let g:vimtex_view_general_viewer = 'okular'
@@ -132,12 +127,12 @@ let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
 let g:vimtex_fold_enabled=1
 
 " ------------------------------------------------
-" Vim-Pandoc
+" Vim-Pandoc-Syntax
 " ------------------------------------------------
 let g:pandoc#spell#enabled = 0
 let g:pandoc#modules#disabled = ["folding"]
-"let g:pandoc#command#autoexec_on_writes = 1
-"let g:pandoc#command#autoexec_command = "Pandoc pdf --metadata-file=~/pandoc.yaml --pdf-engine=xelatex"
+" let g:pandoc#command#autoexec_on_writes = 1
+" let g:pandoc#command#autoexec_command = "Pandoc pdf --metadata-file=~/pandoc.yaml --pdf-engine=xelatex"
 
 " ------------------------------------------------
 " NERDTree
@@ -167,8 +162,4 @@ let g:wiki_root = '~'
 let g:wiki_filetypes = ['md']
 let g:wiki_link_extension = '.md'
 let g:wiki_viewer = { 'pdf': 'xdg-open' }
-
-" ------------------------------------------------
-" coc
-" ------------------------------------------------
-"source ~/.config/nvim/coc.vim
+let g:wiki_link_toggle_on_follow = 0

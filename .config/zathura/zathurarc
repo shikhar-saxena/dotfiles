@@ -3,19 +3,15 @@ set synctex-editor-command "nvr --remote-silent +%{line} %{input}"
 
 include cake_zathura 
 set sandbox none
-set window-title-basename "true"
+set window-title-basename true
 set selection-clipboard "clipboard"
-set adjust-open width
+# set adjust-open "width" 
 set pages-per-row 1
 
 set scroll-page-aware "true"
 set scroll-full-overlap 0.01
 set scroll-step 100
 
-set zoom-min 60
+# set zoom-min 60
 set font "Iosevka 12"
-# set guioptions none
-
-# key binds
-map i recolor
 

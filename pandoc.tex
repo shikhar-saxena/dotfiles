@@ -1,0 +1,71 @@
+% \usepackage{titlesec}
+\usepackage{titling}
+
+
+% \setmainfont{Libertinus Sans}
+% \setmathrm{Fira Math}
+
+% Specify different font for section headings
+% \newfontfamily\headingfont[]{Gill Sans}
+% \titleformat*{\section}{\LARGE\headingfont}
+% \titleformat*{\subsection}{\Large\headingfont}
+% \titleformat*{\subsubsection}{\large\headingfont}
+% \renewcommand{\maketitlehooka}{\headingfont}
+
+\usepackage{enumitem}
+\setlist[itemize,1]{label=$\circ$}
+\setlist[itemize,2]{label=$\star$}
+\setlist[itemize,3]{label=$\bullet$}
+
+
+
+% \renewcommand{\familydefault}{\sfdefault}
+% \usepackage{cmbright}
+% \renewcommand*\rmdefault{cmss}
+% \renewcommand*\ttdefault{cmtt}
+% \usepackage{isomath}
+
+\usepackage{amsthm, amssymb}
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{example}{Example}
+\newtheorem{lemma}{Lemma}
+\newtheorem*{remark}{Remark}
+
+% \usepackage{parskip}
+% \setlength{\parindent}{15pt}
+
+
+\usepackage{tocloft}
+%\renewcommand\cftsecfont{\normalfont\bfseries}
+%\renewcommand\cftsubsecfont{\normalfont}
+%\renewcommand\cftsubsubsecfont{\normalfont\bfseries}
+
+\renewcommand{\cftsecdotsep}{2}
+
+\renewcommand{\cftsecleader}{\color{red}       \cftdotfill{\cftsecdotsep}}
+\renewcommand{\cftsubsecleader}{\color{red}     \cftdotfill{\cftsecdotsep}}
+\renewcommand{\cftsubsubsecleader}{\color{red}     \cftdotfill{\cftsecdotsep}}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+% \fancyhf{}
+% \fancyhead[L]{\thesection}
+% \fancyhead[R]{\ass}
+% \fancyfoot[C]{\thepage}
+\renewcommand{\footrulewidth}{0.4pt}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\fancypagestyle{plain}{%  the preset of fancyhdr 
+  % \fancyhf{}
+\fancyhead[L]{\thetitle}
+% \fancyhead[R]{\ass}
+% \fancyfoot[C]{\thepage}
+}
+
+
+
+\newcommand{\bs}[1]{\left[#1\right]}
+\newcommand{\bp}[1]{\left(#1\right)}
+\newcommand{\bc}[1]{\left\{#1\right\}}
+

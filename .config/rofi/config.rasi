@@ -1,0 +1,26 @@
+configuration {
+    font: "FiraCode Nerd Font 14";
+    line-margin: 10;
+
+    modi: "drun,run";
+
+    display-ssh:    " ";
+    display-run:    " ";
+    display-drun:   " ";
+    display-window: " ";
+    display-combi:  " ";
+    show-icons:     true;
+    icon-theme: "We10X-purple-dark";
+}
+
+
+@theme "~/.config/rofi/nord.rasi"
+
+listview {
+	lines: 10;
+	columns: 1;
+}
+
+window {
+	width: 40%;
+}

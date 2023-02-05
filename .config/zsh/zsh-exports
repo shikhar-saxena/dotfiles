@@ -1,5 +1,6 @@
 MAVEN="/home/shikhar/apache-maven-3.8.5/bin"
 TERMINAL="alacritty"
 DOWNLOADS="/home/shikhar/Downloads"
+export LC_ALL=en_US.UTF-8
 export NVIM_LISTEN_ADDRESS=/tmp/nvimsocket
-export PATH="$DOWNLOADS:$MAVEN:$TERMINAL:$PATH"
+export PATH="$DOWNLOADS:$MAVEN:$TERMINAL:$PATH:/home/shikhar/.spicetify"

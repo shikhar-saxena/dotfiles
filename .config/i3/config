@@ -32,6 +32,9 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 #bindsym $mod+l exec "i3lock -c 000000"
 bindsym $mod+l exec "i3lock -c 23395d"
 
+bindsym $mod+Prior workspace prev
+bindsym $mod+Next workspace next
+
 # auto lock the screen after 15 minutes of no usage
 exec "xautolock -detectsleep -time 15 -locker \"i3lock -c 000000\""
 
@@ -39,7 +42,7 @@ exec "xautolock -detectsleep -time 15 -locker \"i3lock -c 000000\""
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
-#exec_always --no-startup-id autotiling
+exec_always --no-startup-id autotiling
 default_border pixel
 
 exec --no-startup-id picom --experimental-backends -b
@@ -70,10 +73,12 @@ bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+Shift+w kill
+bindsym $mod+q kill
 bindsym Ctrl+Shift+w kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
+bindsym $mod+d exec rofi -show  
+# bindsym $mod+d exec dmenu_run
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -208,8 +213,9 @@ bindsym $mod+r mode "resize"
 
 # Wallpaper
 # exec_always feh --bg-fill /usr/share/backgrounds/linuxmint-vanessa/fakurian_purple.jpg
-# exec_always feh --bg-fill /home/shikhar/Pictures/Wallpapers/Fd0JbbnX0AMm5OE.jpeg
-exec_always feh --bg-fill /home/shikhar/Pictures/Wallpapers/4K.jpeg
+exec_always feh --bg-fill /home/shikhar/Pictures/Wallpapers/Fd0JbbnX0AMm5OE.jpeg
+# exec_always feh --bg-fill /home/shikhar/Pictures/Wallpapers/4K.jpeg
+# exec_always feh --bg-center /home/shikhar/Pictures/Wallpapers/FmV23vXXoAALtrc.jpg
 # exec_always feh --bg-fill /home/shikhar/Pictures/Wallpapers/282-2823101_kpop-dreamcatcher.jpg
 
 # Polybar
@@ -231,6 +237,7 @@ bindsym Ctrl+Shift+Print exec --no-startup-id maim --format=png --select | xclip
 
 # Zathura
 bindsym $mod+z exec --no-startup-id zathura
+# bindsym $mod+s exec --no-startup-id sioyek
 bindsym $mod+b exec --no-startup-id blueberry
 bindsym $mod+n exec --no-startup-id nemo
 
