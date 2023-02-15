@@ -1,0 +1,82 @@
+{
+  "$": {
+    "prefix": "$",
+    "description": "Inline Math",
+    "body": "\\$$1\\$$0"
+  },
+  "$$": {
+    "prefix": "$$",
+    "description": "Math",
+    "body": [
+      "\\$\\$",
+      "$1",
+      "\\$\\$ $0"
+    ]
+  },
+  "mt": {
+    "prefix": "mt",
+    "description": "Make Title",
+    "body": [
+      "---",
+      "title: $1",
+      "date: ${CURRENT_MONTH_NAME} ${CURRENT_DATE}, ${CURRENT_YEAR}",
+      "---",
+      "",
+      "$0"
+    ]
+  },
+
+  "beg": {
+    "prefix": "beg",
+    "description": "begin{} / end{}",
+    "body": [
+      "\\begin{$1\\}",
+      "\t$0",
+      "\\end{$1\\}"
+    ]
+  },
+  "c": {
+    "prefix": "c",
+    "description": "Caligraphy",
+    "body": "\\mathcal{$1\\}$0"
+  },
+  "d": {
+    "prefix": "d",
+    "description": "idk",
+    "body": "\\mathbb{$1\\}$0"
+  },
+  "/": {
+    "prefix": "/",
+    "description": "Fraction",
+    "body": "\\frac{$1}{$2}$0"
+  },
+  "i": {
+    "prefix": "i",
+    "description": "italic",
+    "body": "*${1:italic}*$0"
+  },
+  "b": {
+    "prefix": "b",
+    "description": "bold",
+    "body": "**${1:bold}**$0"
+  },
+  "bi": {
+    "prefix": "bi",
+    "description": "bold italic",
+    "body": "***${1:bold-italic}***$0"
+  },
+  "ac": {
+    "prefix": "ac",
+    "description": "add new class description (short)",
+    "body": "- [Class-${1}](${CURRENT_DATE}-${CURRENT_MONTH}.md)"
+  },
+  "acf": {
+    "prefix": "acf",
+    "description": "add new class description (full)",
+    "body": [
+      "- Class-${1}",
+      "  - [${1}-md](Class-${1}/${CURRENT_DATE}-${CURRENT_MONTH}.md)",
+      "  - [${1}-pdf](file:Class-${1}/${CURRENT_DATE}-${CURRENT_MONTH}.pdf)"
+    ]
+  }
+}

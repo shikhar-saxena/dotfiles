@@ -8,7 +8,7 @@ alias r="cd ~/research"
 alias d="cd ~/Downloads"
 
 # Alias for commands
-alias f="nemo ."
+alias n="nemo ."
 alias l="ls"
 alias z="zathura"
 alias jl="jupyter-lab"

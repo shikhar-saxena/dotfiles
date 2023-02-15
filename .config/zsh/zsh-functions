@@ -1,5 +1,10 @@
+kazam_codec() {
+    ffmpeg -y -i "$1" -c:v libx264 -c:a aac -strict experimental -tune fastdecode -pix_fmt yuv420p -b:a 192k -ar 48000 "$2"
+    rm "$1"
+}
+
 pd() {
-  pandoc "$1" -o "$2" --metadata-file="$HOME/pandoc.yaml" --pdf-engine=xelatex;
+  pandoc "$1" -o "$2" --metadata-file="$HOME/pandoc.yaml" -H "$HOME/pandoc.tex" --pdf-engine=xelatex;
 }
 
 # Function to source files if they exist

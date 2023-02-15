@@ -21,7 +21,7 @@ toccolor: red
 fontsize: 12pt
 # subparagraph: yes
 graphicx: true
-mainfont: Libertinus Sans
+# mainfont: Libertinus Sans
 # mathfont: Libertinus Math
-mathfontoptions:
-- Scale=1.15
+# mathfontoptions:
+# - Scale=1.15

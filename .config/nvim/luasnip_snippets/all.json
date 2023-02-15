@@ -1,0 +1,17 @@
+{
+  "sign": {
+    "prefix": "sign",
+    "description": "Signature",
+    "body": [
+      "Yours sincerely,",
+      "Shikhar Saxena,",
+      "UG3 / LCD2021,",
+      "2021121010."
+    ]
+  },
+  "date": {
+    "prefix": "date",
+    "description": "Date",
+    "body": "${CURRENT_MONTH_NAME} ${CURRENT_DATE}, ${CURRENT_YEAR}"
+  }
+}

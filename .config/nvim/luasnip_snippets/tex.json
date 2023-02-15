@@ -1,0 +1,40 @@
+{
+  "beg": {
+    "prefix": "beg",
+    "description": "begin{} / end{}",
+    "body": [
+      "\\begin{$1\\}",
+      "\t$0",
+      "\\end{$1\\}"
+    ]
+  },
+  "$$": {
+    "prefix": "$$",
+    "description": "Math",
+    "body": [
+      "\\[",
+      "$1",
+      "\\] $0"
+    ]
+  },
+  "/": {
+    "prefix": "/",
+    "description": "Fraction",
+    "body": "\\frac{$1}{$2}$0"
+  },
+  "b": {
+    "prefix": "b",
+    "description": "Bold",
+    "body": "\\textbf{$1\\}$0"
+  },
+  "c": {
+    "prefix": "c",
+    "description": "cursive",
+    "body": "\\mathcal{$1\\}$0"
+  },
+  "d": {
+    "prefix": "d",
+    "description": "idk",
+    "body": "\\mathbb{$1\\}$0"
+  }
+}
