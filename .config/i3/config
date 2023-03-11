@@ -61,8 +61,8 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 # Brightness
-bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl --min-val=2 -q set 3%-
-bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl -q set 3%+
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl --min-val=2 -q set 10%-
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl -q set 10%+
 
 
 # Use Mouse+$mod to drag floating windows to their wanted position
@@ -219,7 +219,7 @@ exec_always feh --bg-fill /home/shikhar/Pictures/Wallpapers/Fd0JbbnX0AMm5OE.jpeg
 # exec_always feh --bg-fill /home/shikhar/Pictures/Wallpapers/282-2823101_kpop-dreamcatcher.jpg
 
 # Polybar
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh --forest
 
 # bindsym Print exec --no-startup-id gnome-screenshot
 # Screenshots

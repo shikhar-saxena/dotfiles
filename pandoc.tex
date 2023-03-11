@@ -2,6 +2,12 @@
 \usepackage{titling}
 \usepackage[most]{tcolorbox}
 
+\usepackage{physics}
+\usepackage[ruled]{algorithm2e}
+
+\usepackage{tikz}
+\usetikzlibrary{automata,arrows,positioning,calc}
+
 % \setmainfont{Libertinus Sans}
 % \setmathrm{Fira Math}
 
@@ -17,7 +23,7 @@
 \setlist[itemize,2]{label=$\star$}
 \setlist[itemize,3]{label=$\bullet$}
 
-
+\usepackage{graphicx}
 
 % \renewcommand{\familydefault}{\sfdefault}
 % \usepackage{cmbright}
@@ -27,6 +33,7 @@
 
 \usepackage{amsthm, amssymb}
 \newtheorem{definition}{Definition}
+\newtheorem{prop}{Proposition}
 \newtheorem{corollary}{Corollary}
 \newtheorem*{note}{Note}
 \newtheorem{theorem}{Theorem}
@@ -67,8 +74,14 @@
 
 
 \newcommand{\ra}{\rightarrow}
+\newcommand{\la}{\leftarrow}
 \newcommand{\far}{\infty}
 \newcommand{\bs}[1]{\left[#1\right]}
+\newcommand{\inn}[2]{\left\langle #1, #2 \right\rangle}
 \newcommand{\bp}[1]{\left(#1\right)}
 \newcommand{\bc}[1]{\left\{#1\right\}}
+\newcommand{\lamb}{\lambda}
+\newcommand{\epsi}{\epsilon}
 
+
+\DeclareMathOperator{\diag}{diag}

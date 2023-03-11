@@ -3,10 +3,12 @@ set synctex-editor-command "nvr --remote-silent +%{line} %{input}"
 
 include nord 
 set sandbox none
-set window-title-basename true
+# set window-title-basename true
 set selection-clipboard "clipboard"
 # set adjust-open "width" 
 set pages-per-row 1
+
+set guioptions none
 
 set scroll-page-aware "true"
 set scroll-full-overlap 0.01
@@ -15,3 +17,8 @@ set scroll-step 40
 # set zoom-min 60
 set font "Iosevka 12"
 
+unmap PageDown
+unmap PageUp
+
+map <PageDown> scroll full-down
+map <PageUp> scroll full-up

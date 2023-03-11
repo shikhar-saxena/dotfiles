@@ -26,6 +26,7 @@ require('packer').startup(function(use)
     },
   }
 
+  use 'itchyny/calendar.vim'
   -- use 'voldikss/vim-floaterm'
 
   -- use {
@@ -62,6 +63,10 @@ require('packer').startup(function(use)
   -- use 'tpope/vim-fugitive'
   -- use 'tpope/vim-rhubarb'
   use 'lewis6991/gitsigns.nvim'
+
+  -- csv 
+  use 'chrisbra/csv.vim'
+
 
   -- wiki.vim
   use 'lervag/wiki.vim'
@@ -191,6 +196,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- [[Plugins]]
 ------------------------------
 
+
 -- github theme
 require("github-theme").setup({
   theme_style = "dark_default"
@@ -282,7 +288,7 @@ require('telescope').setup {
 -- require("todo-comments").setup()
 
 -- asyncrun
-vim.g.asyncrun_open = 8 
+vim.g.asyncrun_open = 4 
 
 -- Enable telescope fzf native, if installed
 pcall(require('telescope').load_extension, 'fzf')
@@ -308,7 +314,7 @@ vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { de
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'typescript', 'help', 'vim' },
+  ensure_installed = { 'c', 'cpp', 'lua', 'python', 'help', 'vim', 'r', 'latex' },
 
   highlight = { enable = true },
   indent = { enable = true, disable = { 'python' } },
@@ -426,11 +432,12 @@ end
 local servers = {
   -- clangd = {},
   -- gopls = {},
-  -- pyright = {},
+  ltex = {},
+  pyright = {},
   -- rust_analyzer = {},
   -- tsserver = {},
 
-  sumneko_lua = {
+  lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
       telemetry = { enable = false },

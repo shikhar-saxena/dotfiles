@@ -30,7 +30,7 @@
     "prefix": "beg",
     "description": "begin{} / end{}",
     "body": [
-      "\\begin{$1\\}",
+      "\\begin{$1\\}[$2]",
       "\t$0",
       "\\end{$1\\}"
     ]
@@ -40,10 +40,10 @@
     "description": "Caligraphy",
     "body": "\\mathcal{$1\\}$0"
   },
-  "d": {
-    "prefix": "d",
-    "description": "idk",
-    "body": "\\mathbb{$1\\}$0"
+  "u": {
+    "prefix": "u",
+    "description": "underline",
+    "body": "\\underline{$1\\}$0"
   },
   "/": {
     "prefix": "/",
