@@ -2,7 +2,7 @@ configuration {
     font: "FiraCode Nerd Font 14";
     line-margin: 10;
 
-    modi: "drun,run";
+    modi: "drun,windowcd,run";
 
     display-ssh:    " ";
     display-run:    " ";

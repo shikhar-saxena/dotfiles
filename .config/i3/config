@@ -30,7 +30,7 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # keybinding to lock screen
 #bindsym $mod+l exec "i3lock -c 000000"
-bindsym $mod+l exec "i3lock -c 23395d"
+bindsym $mod+l exec "betterlockscreen -l dim --off 120"
 
 bindsym $mod+Prior workspace prev
 bindsym $mod+Next workspace next
@@ -49,8 +49,8 @@ exec --no-startup-id picom --experimental-backends -b
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
@@ -219,7 +219,7 @@ exec_always feh --bg-fill /home/shikhar/Pictures/Wallpapers/Fd0JbbnX0AMm5OE.jpeg
 # exec_always feh --bg-fill /home/shikhar/Pictures/Wallpapers/282-2823101_kpop-dreamcatcher.jpg
 
 # Polybar
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh --forest
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh 
 
 # bindsym Print exec --no-startup-id gnome-screenshot
 # Screenshots
