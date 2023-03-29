@@ -154,8 +154,10 @@ XF86Audio{Next,Prev}
 # Brightness
 #
 
-XF86MonBrightness{Down,Up} 
-	brightnessctl -q set 10%{-,+}
+XF86MonBrightnessUp 
+	brightnessctl -q s +10%
+XF86MonBrightnessDown 
+	brightnessctl -q s 10%-
 
 #
 # Screenshot

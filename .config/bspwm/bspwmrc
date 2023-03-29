@@ -2,7 +2,7 @@
 
 pgrep -x sxhkd > /dev/null || sxhkd &
 nm-applet &
-xautolock -detectsleep -time 15 -locker "i3lock -c 23395d" &
+xautolock -detectsleep -time 10 -locker "betterlockscreen -l dim --off 10" &
 dunst -config ~/.config/dunst/dunstrc &
 picom --experimental-backends -b &
 feh --bg-fill /home/shikhar/Pictures/Wallpapers/Fd0JbbnX0AMm5OE.jpeg &
@@ -11,12 +11,18 @@ $HOME/.config/polybar/launch.sh &
 
 bspc monitor -d 1 2 3 4 5 6 7 8 9 10
 
+# Set layout as tiled on all desktops
+# for d in {1..10}
+# do
+#   bspc desktop `printf "^%d" ${d}` -l tiled
+# done
+
 bspc config border_width         2
-bspc config window_gap          16
+bspc config window_gap          14
 
 bspc config split_ratio          0.52
-bspc config borderless_monocle   true
-bspc config gapless_monocle      true
+bspc config borderless_monocle   false
+bspc config gapless_monocle      false
 
 # bspc rule -a Gimp desktop='^8' state=floating follow=on
 # bspc rule -a Chromium desktop='^2'
@@ -27,10 +33,9 @@ bspc config gapless_monocle      true
 bspc rule -a discord desktop='^9'
 bspc rule -a Spotify desktop='^10'
 bspc rule -a Blueberry.py follow=on desktop='^8' 
-bspc rule -a Yad --name=yad-calendar state=floating layer=above
 bspc rule -a Zathura state=tiled
-bspc rule -a '*:*:Picture-in-Picture' state=floating
 bspc rule -a Alacritty state=tiled
+bspc rule -a Yad --name=yad-calendar state=floating layer=above
 
 # for_window [class="Spotify"] move to workspace $ws10
 # assign [class="discord"] 9

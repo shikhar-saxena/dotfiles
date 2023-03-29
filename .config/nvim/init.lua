@@ -26,26 +26,19 @@ require('packer').startup(function(use)
     },
   }
 
-  use 'itchyny/calendar.vim'
-  -- use 'voldikss/vim-floaterm'
-
-  -- use {
-  --   "folke/todo-comments.nvim",
-  --   requires = "nvim-lua/plenary.nvim",
-  -- }
-
-  -- install without yarn or npm
-  use {
-    "smjonas/snippet-converter.nvim",
-    tag = "*"
-  }
-
-  use 'skywind3000/asyncrun.vim' 
+  use 'skywind3000/asyncrun.vim'
 
   use { -- Autocompletion
     'hrsh7th/nvim-cmp',
-    requires = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
+    requires = {
+      'hrsh7th/cmp-nvim-lsp',
+      'L3MON4D3/LuaSnip',
+      'saadparwaiz1/cmp_luasnip',
+      'hrsh7th/cmp-emoji',
+    },
   }
+
+  use 'nvim-tree/nvim-tree.lua'
 
   use { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
@@ -218,33 +211,33 @@ require('lualine').setup {
 }
 
 -- snippet_converter
-local template = {
-  -- name = "t1", (optionally give your template a name to refer to it in the `ConvertSnippets` command)
-  sources = {
-    ultisnips = {
-      -- Add snippets from (plugin) folders or individual files on your runtimepath...
-      "/home/shikhar/.config/nvim.bak/UltiSnips",
-      -- "./latex-snippets/tex.snippets",
-      -- ...or use absolute paths on your system.
-      -- vim.fn.stdpath("config") .. "/UltiSnips",
-    },
-    -- snipmate = {
-    --   "vim-snippets/snippets",
-    -- },
-  },
-  output = {
-    -- Specify the output formats and paths
-    vscode_luasnip = {
-      vim.fn.stdpath("config") .. "/luasnip_snippets",
-    },
-  },
-}
-
-require("snippet_converter").setup {
-        templates = { template },
-        -- To change the default settings (see configuration section in the documentation)
-        -- settings = {},
-}
+-- local template = {
+--   -- name = "t1", (optionally give your template a name to refer to it in the `ConvertSnippets` command)
+--   sources = {
+--     ultisnips = {
+--       -- Add snippets from (plugin) folders or individual files on your runtimepath...
+--       "/home/shikhar/.config/nvim.bak/UltiSnips",
+--       -- "./latex-snippets/tex.snippets",
+--       -- ...or use absolute paths on your system.
+--       -- vim.fn.stdpath("config") .. "/UltiSnips",
+--     },
+--     -- snipmate = {
+--     --   "vim-snippets/snippets",
+--     -- },
+--   },
+--   output = {
+--     -- Specify the output formats and paths
+--     vscode_luasnip = {
+--       vim.fn.stdpath("config") .. "/luasnip_snippets",
+--     },
+--   },
+-- }
+--
+-- require("snippet_converter").setup {
+--         templates = { template },
+--         -- To change the default settings (see configuration section in the documentation)
+--         -- settings = {},
+-- }
 
 require("luasnip.loaders.from_vscode").load(
   {paths = vim.fn.stdpath("config") .. "/luasnip_snippets"}
@@ -430,10 +423,10 @@ end
 --  Add any additional override configuration in the following tables. They will be passed to
 --  the `settings` field of the server config. You must look up that documentation yourself.
 local servers = {
-  -- clangd = {},
+  clangd = {},
   -- gopls = {},
   ltex = {},
-  pyright = {},
+  -- pyright = {},
   -- rust_analyzer = {},
   -- tsserver = {},
 
@@ -491,6 +484,7 @@ vim.g.wiki_link_toggle_on_follow = 0
 -- Setup neovim lua configuration
 require('neodev').setup()
 --
+
 -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
@@ -558,8 +552,17 @@ cmp.setup {
   sources = {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
+    { name = 'emoji'},
   },
 }
+
+-- ------------------
+-- nvim-tree setup 
+-- ------------------
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+require("nvim-tree").setup()
+
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

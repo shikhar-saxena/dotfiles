@@ -1,14 +1,14 @@
 set synctex true
 set synctex-editor-command "nvr --remote-silent +%{line} %{input}"
 
-include nord 
+include cake_zathura
 set sandbox none
 # set window-title-basename true
 set selection-clipboard "clipboard"
 # set adjust-open "width" 
 set pages-per-row 1
 
-set guioptions none
+# set guioptions none
 
 set scroll-page-aware "true"
 set scroll-full-overlap 0.01

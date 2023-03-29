@@ -13,5 +13,9 @@
     "prefix": "date",
     "description": "Date",
     "body": "${CURRENT_MONTH_NAME} ${CURRENT_DATE}, ${CURRENT_YEAR}"
+  },
+  "coeff": {
+    "prefix": "coeff",
+    "body": "coefficient $0"
   }
 }
