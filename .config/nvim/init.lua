@@ -26,17 +26,52 @@ require('packer').startup(function(use)
     },
   }
 
+
+  use { 'mhartington/formatter.nvim' }
+
+  -- use 'untitled-ai/jupyter_ascending.vim'
+  -- use 'luk400/vim-jukit'
+--   
+--   use {
+--   "glacambre/firenvim",
+--   run = function()
+--     vim.fn["firenvim#install"](0)
+--   end,
+-- }
+  -- use 'bfredl/nvim-ipy'
+
+  -- use {
+  --   "zbirenbaum/copilot.lua",
+  --   cmd = "Copilot",
+  --   event = "InsertEnter", 
+  --   config = function()
+  --     require("copilot").setup({
+  --       suggestion = { enabled = false },
+  --       panel = { enabled = false },
+  --     })
+  --   end
+  -- }
+
   use 'skywind3000/asyncrun.vim'
 
-  use { -- Autocompletion
+  use { -- Autocompletion 
     'hrsh7th/nvim-cmp',
     requires = {
       'hrsh7th/cmp-nvim-lsp',
       'L3MON4D3/LuaSnip',
       'saadparwaiz1/cmp_luasnip',
       'hrsh7th/cmp-emoji',
-    },
+    }
   }
+
+  -- use {
+  --   'zbirenbaum/copilot-cmp',
+  --   after = { 
+  --     'copilot.lua',
+  --     'nvim-cmp',
+  --   },
+  --   config = function() require('copilot_cmp').setup() end        
+  -- }
 
   use 'nvim-tree/nvim-tree.lua'
 
@@ -65,7 +100,7 @@ require('packer').startup(function(use)
   use 'lervag/wiki.vim'
 
   -- autopair
-  use 	"windwp/nvim-autopairs"
+  -- use 	"windwp/nvim-autopairs"
 
   -- Latex and Pandoc
   use 'lervag/vimtex'
@@ -74,6 +109,8 @@ require('packer').startup(function(use)
 
   -- Theme
   use ({ 'projekt0n/github-nvim-theme', tag = 'v0.0.7' })
+  use { "ellisonleao/gruvbox.nvim" }
+  use 'tiagovla/tokyodark.nvim'
 
   use 'nvim-lualine/lualine.nvim' -- Fancier statusline
   use 'lukas-reineke/indent-blankline.nvim' -- Add indentation guides even on blank lines
@@ -185,26 +222,40 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
 })
 
+
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+
+
 ------------------------------
 -- [[Plugins]]
 ------------------------------
 
 
 -- github theme
-require("github-theme").setup({
-  theme_style = "dark_default"
-})
+-- require("github-theme").setup({
+--   theme_style = "dark_default"
+-- })
+
+vim.g.tokyodark_transparent_background = false
+vim.g.tokyodark_enable_italic_comment = true
+vim.g.tokyodark_enable_italic = true
+vim.g.tokyodark_color_gamma = "1.0"
+vim.cmd("colorscheme tokyodark")
+
+-- vim.o.background = "dark" -- or "light" for light mode
+-- vim.cmd([[colorscheme gruvbox]])
 
 
 -- autopair
-require("nvim-autopairs").setup()
+-- require("nvim-autopairs").setup()
 
 -- Set lualine as statusline
 -- See `:help lualine.txt`
 require('lualine').setup {
   options = {
     icons_enabled = false,
-    theme = 'github_dark_default',
+    -- theme = 'github_dark_default',
     component_separators = '|',
     section_separators = '',
   },
@@ -489,6 +540,15 @@ require('neodev').setup()
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
+ -- vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+ --      vim.lsp.diagnostic.on_publish_diagnostics, {
+ --        signs = true,
+ --        virtual_text = false,
+ --        underline = false,
+ --        update_in_insert = true,
+ --      }
+ --    )
+
 -- Setup mason so it can manage external tooling
 require('mason').setup()
 
@@ -553,6 +613,7 @@ cmp.setup {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
     { name = 'emoji'},
+    -- { name = 'copilot'},
   },
 }
 
@@ -564,5 +625,27 @@ vim.g.loaded_netrwPlugin = 1
 require("nvim-tree").setup()
 
 
+require("formatter").setup()
+
+
+--
+-- nvim-ipy
+--
+
+-- vim.cmd [[
+--
+--
+-- command! -nargs=0 RunQtConsole
+--   \call jobstart("jupyter qtconsole --JupyterWidget.include_other_output=True")
+--
+-- let g:ipy_celldef = '^##' " regex for cell start and end
+--
+-- nmap <silent> <leader>jqt :RunQtConsole<Enter>
+-- nmap <silent> <leader>jk :IPython<Space>--existing<Space>--no-window<Enter>
+-- nmap <silent> <leader>jc <Plug>(IPy-RunCell)
+-- nmap <silent> <leader>ja <Plug>(IPy-RunAll)
+--
+-- ]]
+--
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

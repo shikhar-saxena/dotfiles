@@ -22,11 +22,11 @@ super + Escape
 # super + shift + {q,r}
 # 	bspc {quit,wm -r}
 
-super + shift + q
-	bspc quit
+# super + shift + q
+	# bspc quit
 
 super + shift + r
-	killall sxhkd; bspc wm -r
+	killall sxhkd; killall dunst; bspc wm -r
 
 # close and kill
 # super + {_,shift + }w

@@ -2,7 +2,7 @@
 
 pgrep -x sxhkd > /dev/null || sxhkd &
 nm-applet &
-xautolock -detectsleep -time 10 -locker "betterlockscreen -l dim --off 10" &
+# xautolock -detectsleep -time 10 -locker "betterlockscreen -l dim --off 10" &
 dunst -config ~/.config/dunst/dunstrc &
 picom --experimental-backends -b &
 feh --bg-fill /home/shikhar/Pictures/Wallpapers/Fd0JbbnX0AMm5OE.jpeg &
@@ -34,6 +34,7 @@ bspc rule -a discord desktop='^9'
 bspc rule -a Spotify desktop='^10'
 bspc rule -a Blueberry.py follow=on desktop='^8' 
 bspc rule -a Zathura state=tiled
+bspc rule -a matplotlib state=floating layer=above
 bspc rule -a Alacritty state=tiled
 bspc rule -a Yad --name=yad-calendar state=floating layer=above
 

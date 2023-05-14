@@ -8,6 +8,15 @@
       "\\end{$1\\}"
     ]
   },
+  "frame": {
+    "prefix": "frame",
+    "description": "beamer frame",
+    "body": [
+      "\\begin{frame}{$1}",
+      "$0",
+      "\\end{frame}"
+    ]
+  },
   "$$": {
     "prefix": "$$",
     "description": "Math",

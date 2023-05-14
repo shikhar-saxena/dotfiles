@@ -9,19 +9,19 @@ geometry:
 - right=1.2in
 hyperrefoptions:
 - linktoc=all
-toc: true
+toc: true 
 toc-depth: 3
 linkcolor: red 
 citecolor: blue
 urlcolor: blue
 toccolor: red 
-# linestretch: 1.15 # Setspace package
+linestretch: 1 # Setspace package
 # numbersections: true
 # fontenc: T1
 fontsize: 12pt
 # subparagraph: yes
 graphicx: true
-# mainfont: TeX Gyre Pagella 
+# mainfont: Libertinus Serif 
 # mathfont: Latin Modern Math
 # mathfontoptions:
 # - Scale=1.15
