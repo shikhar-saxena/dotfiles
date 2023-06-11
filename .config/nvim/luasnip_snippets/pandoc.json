@@ -35,6 +35,11 @@
       "\\end{$1\\}"
     ]
   },
+  "d": {
+    "prefix": "d",
+    "description": "mathbb",
+    "body": "\\mathbb{$1\\}$0"
+  },
   "c": {
     "prefix": "c",
     "description": "Caligraphy",

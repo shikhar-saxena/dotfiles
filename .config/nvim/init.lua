@@ -8,7 +8,6 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
 end
 
 require('packer').startup(function(use)
-
   use 'wbthomason/packer.nvim'
 
   use { -- LSP Configuration & Plugins
@@ -26,24 +25,25 @@ require('packer').startup(function(use)
     },
   }
 
+  use 'voldikss/vim-floaterm'
 
-  use { 'mhartington/formatter.nvim' }
+  use 'jose-elias-alvarez/null-ls.nvim'
 
   -- use 'untitled-ai/jupyter_ascending.vim'
   -- use 'luk400/vim-jukit'
---   
---   use {
---   "glacambre/firenvim",
---   run = function()
---     vim.fn["firenvim#install"](0)
---   end,
--- }
+  --
+  --   use {
+  --   "glacambre/firenvim",
+  --   run = function()
+  --     vim.fn["firenvim#install"](0)
+  --   end,
+  -- }
   -- use 'bfredl/nvim-ipy'
 
   -- use {
   --   "zbirenbaum/copilot.lua",
   --   cmd = "Copilot",
-  --   event = "InsertEnter", 
+  --   event = "InsertEnter",
   --   config = function()
   --     require("copilot").setup({
   --       suggestion = { enabled = false },
@@ -54,7 +54,7 @@ require('packer').startup(function(use)
 
   use 'skywind3000/asyncrun.vim'
 
-  use { -- Autocompletion 
+  use { -- Autocompletion
     'hrsh7th/nvim-cmp',
     requires = {
       'hrsh7th/cmp-nvim-lsp',
@@ -66,11 +66,11 @@ require('packer').startup(function(use)
 
   -- use {
   --   'zbirenbaum/copilot-cmp',
-  --   after = { 
+  --   after = {
   --     'copilot.lua',
   --     'nvim-cmp',
   --   },
-  --   config = function() require('copilot_cmp').setup() end        
+  --   config = function() require('copilot_cmp').setup() end
   -- }
 
   use 'nvim-tree/nvim-tree.lua'
@@ -92,7 +92,7 @@ require('packer').startup(function(use)
   -- use 'tpope/vim-rhubarb'
   use 'lewis6991/gitsigns.nvim'
 
-  -- csv 
+  -- csv
   use 'chrisbra/csv.vim'
 
 
@@ -104,18 +104,19 @@ require('packer').startup(function(use)
 
   -- Latex and Pandoc
   use 'lervag/vimtex'
-  use 'vim-pandoc/vim-pandoc-syntax' 
+  use 'vim-pandoc/vim-pandoc-syntax'
   -- use 'vim-pandoc/vim-pandoc'
 
   -- Theme
-  use ({ 'projekt0n/github-nvim-theme', tag = 'v0.0.7' })
+  use({ 'projekt0n/github-nvim-theme', tag = 'v0.0.7' })
   use { "ellisonleao/gruvbox.nvim" }
-  use 'tiagovla/tokyodark.nvim'
+  -- use 'tiagovla/tokyodark.nvim'
+  use "folke/tokyonight.nvim"
 
-  use 'nvim-lualine/lualine.nvim' -- Fancier statusline
+  use 'nvim-lualine/lualine.nvim'           -- Fancier statusline
   use 'lukas-reineke/indent-blankline.nvim' -- Add indentation guides even on blank lines
-  use 'numToStr/Comment.nvim' -- "gc" to comment visual regions/lines
-  use 'tpope/vim-sleuth' -- Detect tabstop and shiftwidth automatically
+  use 'numToStr/Comment.nvim'               -- "gc" to comment visual regions/lines
+  use 'tpope/vim-sleuth'                    -- Detect tabstop and shiftwidth automatically
 
   -- Fuzzy Finder (files, lsp, etc)
   use { 'nvim-telescope/telescope.nvim', branch = '0.1.x', requires = { 'nvim-lua/plenary.nvim' } }
@@ -159,7 +160,7 @@ vim.api.nvim_create_autocmd('BufWritePost', {
 -- See `:help vim.o`
 
 -- Set highlight on search
-vim.o.hlsearch = true 
+vim.o.hlsearch = false
 
 -- Make line numbers default
 vim.wo.number = true
@@ -174,13 +175,13 @@ vim.o.shiftwidth = 2
 vim.o.mouse = 'a'
 
 -- Clipboard
-vim.opt.clipboard:prepend {'unnamed', 'unnamedplus'}
+vim.opt.clipboard:prepend { 'unnamed', 'unnamedplus' }
 
 -- Enable break indent
 vim.o.breakindent = true
 
 -- Save undo history
-vim.o.undofile = true 
+vim.o.undofile = true
 
 -- Case insensitive searching UNLESS /C or capital in search
 vim.o.ignorecase = true
@@ -211,6 +212,12 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
+-- Change split movements
+-- vim.keymap.set("n", "<C-J>", "<C-W><C-J>", { noremap = true})
+-- vim.keymap.set("n", "<C-H>", "<C-W><C-H>", { noremap = true})
+-- vim.keymap.set("n", "<C-K>", "<C-W><C-K>", { noremap = true})
+-- vim.keymap.set("n", "<C-L>", "<C-W><C-L>", { noremap = true})
+
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
@@ -225,7 +232,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-
+vim.opt.foldenable = false
 
 ------------------------------
 -- [[Plugins]]
@@ -236,12 +243,21 @@ vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 -- require("github-theme").setup({
 --   theme_style = "dark_default"
 -- })
+require("tokyonight").setup({
+  styles = {
+    -- Value is any valid attr-list value for `:help nvim_set_hl`
+    comments = { italic = false },
+    keywords = { italic = false },
+  },
+  lualine_bold = true, -- When `true`, section headers in the lualine theme will be bold
+})
+vim.cmd [[colorscheme tokyonight-night]]
 
-vim.g.tokyodark_transparent_background = false
-vim.g.tokyodark_enable_italic_comment = true
-vim.g.tokyodark_enable_italic = true
-vim.g.tokyodark_color_gamma = "1.0"
-vim.cmd("colorscheme tokyodark")
+-- vim.g.tokyodark_transparent_background = false
+-- vim.g.tokyodark_enable_italic_comment = true
+-- vim.g.tokyodark_enable_italic = true
+-- vim.g.tokyodark_color_gamma = "1.0"
+-- vim.cmd("colorscheme tokyodark")
 
 -- vim.o.background = "dark" -- or "light" for light mode
 -- vim.cmd([[colorscheme gruvbox]])
@@ -291,7 +307,7 @@ require('lualine').setup {
 -- }
 
 require("luasnip.loaders.from_vscode").load(
-  {paths = vim.fn.stdpath("config") .. "/luasnip_snippets"}
+  { paths = vim.fn.stdpath("config") .. "/luasnip_snippets" }
 )
 
 -- Enable Comment.nvim
@@ -332,7 +348,7 @@ require('telescope').setup {
 -- require("todo-comments").setup()
 
 -- asyncrun
-vim.g.asyncrun_open = 4 
+vim.g.asyncrun_open = 4
 
 -- Enable telescope fzf native, if installed
 pcall(require('telescope').load_extension, 'fzf')
@@ -476,7 +492,7 @@ end
 local servers = {
   clangd = {},
   -- gopls = {},
-  ltex = {},
+  -- ltex = {},
   -- pyright = {},
   -- rust_analyzer = {},
   -- tsserver = {},
@@ -500,16 +516,16 @@ vim.g.vimtex_fold_enabled = 1
 -- Pandoc
 local syntax_pandoc = function() vim.o.filetype = "pandoc.markdown" end
 
-local au_pandoc = vim.api.nvim_create_augroup("pandoc_syntax", {clear = true})
-vim.api.nvim_create_autocmd({ "BufNewFile", "BufFilePre", "BufRead" } , {
-    pattern = {"*.md"},
-    callback = syntax_pandoc,
-    group = au_pandoc
+local au_pandoc = vim.api.nvim_create_augroup("pandoc_syntax", { clear = true })
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufFilePre", "BufRead" }, {
+  pattern = { "*.md" },
+  callback = syntax_pandoc,
+  group = au_pandoc
 })
 
 vim.keymap.set("n", "<C-s>",
   "<Esc>:w<CR>:AsyncRun pandoc -i '%' -o '%:r.pdf' --metadata-file=$HOME/pandoc.yaml -H $HOME/pandoc.tex --pdf-engine=xelatex<CR><CR>",
-  { noremap = true})
+  { noremap = true })
 
 -- vim.api.nvim_create_user_command("Pd", function()
 -- 	vim.cmd(
@@ -540,14 +556,14 @@ require('neodev').setup()
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
- -- vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
- --      vim.lsp.diagnostic.on_publish_diagnostics, {
- --        signs = true,
- --        virtual_text = false,
- --        underline = false,
- --        update_in_insert = true,
- --      }
- --    )
+-- vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+--      vim.lsp.diagnostic.on_publish_diagnostics, {
+--        signs = true,
+--        virtual_text = false,
+--        underline = false,
+--        update_in_insert = true,
+--      }
+--    )
 
 -- Setup mason so it can manage external tooling
 require('mason').setup()
@@ -612,40 +628,62 @@ cmp.setup {
   sources = {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
-    { name = 'emoji'},
+    { name = 'emoji' },
     -- { name = 'copilot'},
   },
 }
 
 -- ------------------
--- nvim-tree setup 
+-- nvim-tree setup
 -- ------------------
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
-require("nvim-tree").setup()
+-- require("nvim-tree").setup()
+
+local function my_on_attach(bufnr)
+  local api = require "nvim-tree.api"
+
+  local function opts(desc)
+    return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+  end
+
+  -- default mappings
+  api.config.mappings.default_on_attach(bufnr)
+
+  -- custom mappings
+  vim.keymap.set('n', '<C-t>', api.tree.change_root_to_parent, opts('Up'))
+  vim.keymap.set('n', '?', api.tree.toggle_help, opts('Help'))
+end
+
+-- pass to setup along with your other options
+require("nvim-tree").setup {
+  ---
+  on_attach = my_on_attach,
+  view = {
+    side = "right",
+  },
+
+  ---
+}
+
+vim.keymap.set("n", "<C-b>", "<cmd>NvimTreeToggle<cr>", { noremap = true })
 
 
-require("formatter").setup()
-
 
 --
--- nvim-ipy
+-- null_ls
 --
 
--- vim.cmd [[
---
---
--- command! -nargs=0 RunQtConsole
---   \call jobstart("jupyter qtconsole --JupyterWidget.include_other_output=True")
---
--- let g:ipy_celldef = '^##' " regex for cell start and end
---
--- nmap <silent> <leader>jqt :RunQtConsole<Enter>
--- nmap <silent> <leader>jk :IPython<Space>--existing<Space>--no-window<Enter>
--- nmap <silent> <leader>jc <Plug>(IPy-RunCell)
--- nmap <silent> <leader>ja <Plug>(IPy-RunAll)
---
--- ]]
---
+local null_ls = require("null-ls")
+
+null_ls.setup({
+  sources = {
+    null_ls.builtins.formatting.black,
+    null_ls.builtins.code_actions.gitsigns,
+    null_ls.builtins.formatting.latexindent,
+    -- null_ls.builtins.completion.luasnip,
+  },
+})
+
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

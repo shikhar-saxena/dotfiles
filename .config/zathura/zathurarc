@@ -1,7 +1,7 @@
 set synctex true
 set synctex-editor-command "nvr --remote-silent +%{line} %{input}"
 
-include cake_zathura
+include embark
 set sandbox none
 # set window-title-basename true
 set selection-clipboard "clipboard"

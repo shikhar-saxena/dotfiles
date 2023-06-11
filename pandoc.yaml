@@ -9,7 +9,7 @@ geometry:
 - right=1.2in
 hyperrefoptions:
 - linktoc=all
-toc: true 
+toc: false 
 toc-depth: 3
 linkcolor: red 
 citecolor: blue

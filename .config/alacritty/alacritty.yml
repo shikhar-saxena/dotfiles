@@ -15,20 +15,20 @@ scrolling:
 font:
   size: 8.5
   normal:
-    family: JetBrains Mono Nerd Font
-    style: Regular
-  bold:
-    family: JetBrains Mono Nerd Font
-    style: Bold 
-  italic:
-    family: JetBrains Mono Nerd Font
-    style: Italic
-  bold_italic:
-    family: JetBrains Mono Nerd Font
-    style: Bold Italic
+    family: Fira Code 
+    # style: Regular
+  # bold:
+  #   family: Fira Code 
+  #   style: Bold 
+  # italic:
+  #   family: Fira Code 
+  #   style: Italic
+  # bold_italic:
+  #   family: Fira Code 
+  #   style: Bold Italic
   offset:
     x: 0
-    y: 4
+    y: 5
 
 draw_bold_text_with_bright_colors: true
 

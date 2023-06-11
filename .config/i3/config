@@ -30,20 +30,20 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # keybinding to lock screen
 #bindsym $mod+l exec "i3lock -c 000000"
-bindsym $mod+l exec "betterlockscreen -l dim --off 120"
+bindsym $mod+slash exec "betterlockscreen -l dim --off 120"
 
-bindsym $mod+Prior workspace prev
-bindsym $mod+Next workspace next
+bindsym $mod+bracketleft workspace prev
+bindsym $mod+bracketright workspace next
 
 # auto lock the screen after 15 minutes of no usage
-exec "xautolock -detectsleep -time 15 -locker \"i3lock -c 000000\""
+# exec "xautolock -detectsleep -time 15 -locker \"i3lock -c 000000\""
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
-exec_always --no-startup-id autotiling
-default_border pixel
+# exec_always --no-startup-id autotiling
+default_border pixel 2
 
 exec --no-startup-id picom --experimental-backends -b
 
@@ -91,10 +91,10 @@ bindsym $mod+d exec rofi -show
 #bindsym $mod+l focus right
 
 # alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 
 # move focused window
 #bindsym $mod+Shift+h move left
@@ -103,13 +103,13 @@ bindsym $mod+Right focus right
 #bindsym $mod+Shift+l move right
 
 # alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
 
 # split in horizontal orientation
-bindsym $mod+h split h
+bindsym $mod+c split h
 
 # split in vertical orientation
 bindsym $mod+v split v
@@ -238,8 +238,8 @@ bindsym Ctrl+Shift+Print exec --no-startup-id maim --format=png --select | xclip
 # Zathura
 bindsym $mod+z exec --no-startup-id zathura
 # bindsym $mod+s exec --no-startup-id sioyek
-bindsym $mod+b exec --no-startup-id blueberry
-bindsym $mod+n exec --no-startup-id nemo
+# bindsym $mod+b exec --no-startup-id blueberry
+bindsym $mod+n exec --no-startup-id nemo 
 
 # Fouus Window (for Dunst notifs)
 focus_on_window_activation focus
@@ -249,7 +249,7 @@ focus_on_window_activation focus
 #
 # You can use these variables anywhere in the i3 configuration file.
 
-set $base00 #282c34
+set $base00 #40110b
 set $base01 #353b45
 set $base02 #3e4451
 set $base03 #545862
@@ -261,15 +261,15 @@ set $base08 #e06c75
 set $base09 #d19a66
 set $base0A #e5c07b
 set $base0B #98c379
-set $base0C #56b6c2
+set $base0C #918f8e
 #set $base0D #61afef
-set $base0D #4c00b0
+set $base0D #353b45
 set $base0E #c678dd
 set $base0F #be5046
 
 # Basic color configuration using the Base16 variables for windows and borders.
 # Property Name         Border  BG      Text    Indicator Child Border
-client.focused          $base05 $base0D #ffffff $base0D $base0C
+client.focused          $base01 $base0D #ffffff $base0D $base0C
 client.focused_inactive $base01 $base01 $base05 $base03 $base01
 client.unfocused        $base01 $base00 $base05 $base01 $base01
 client.urgent           $base08 $base08 $base00 $base08 $base08
@@ -281,4 +281,6 @@ assign [class="discord"] 9
 assign [class="Blueberry"] 8
 for_window [class="Yad" title="yad-calendar"] floating enable
 
+gaps outer 0
+gaps inner 14
 
