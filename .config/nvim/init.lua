@@ -18,7 +18,7 @@ require('packer').startup(function(use)
       'williamboman/mason-lspconfig.nvim',
 
       -- Useful status updates for LSP
-      'j-hui/fidget.nvim',
+      { 'j-hui/fidget.nvim', tag = 'legacy' },
 
       -- Additional lua configuration, makes nvim stuff amazing
       'folke/neodev.nvim',
@@ -108,6 +108,7 @@ require('packer').startup(function(use)
   -- use 'vim-pandoc/vim-pandoc'
 
   -- Theme
+  use 'tanvirtin/monokai.nvim'
   use({ 'projekt0n/github-nvim-theme', tag = 'v0.0.7' })
   use { "ellisonleao/gruvbox.nvim" }
   -- use 'tiagovla/tokyodark.nvim'
@@ -243,21 +244,17 @@ vim.opt.foldenable = false
 -- require("github-theme").setup({
 --   theme_style = "dark_default"
 -- })
-require("tokyonight").setup({
-  styles = {
-    -- Value is any valid attr-list value for `:help nvim_set_hl`
-    comments = { italic = false },
-    keywords = { italic = false },
-  },
-  lualine_bold = true, -- When `true`, section headers in the lualine theme will be bold
-})
-vim.cmd [[colorscheme tokyonight-night]]
+-- require("tokyonight").setup({
+--   styles = {
+--     -- Value is any valid attr-list value for `:help nvim_set_hl`
+--     comments = { italic = false },
+--     keywords = { italic = false },
+--   },
+--   lualine_bold = true, -- When `true`, section headers in the lualine theme will be bold
+-- })
+-- vim.cmd [[colorscheme tokyonight-night]]
 
--- vim.g.tokyodark_transparent_background = false
--- vim.g.tokyodark_enable_italic_comment = true
--- vim.g.tokyodark_enable_italic = true
--- vim.g.tokyodark_color_gamma = "1.0"
--- vim.cmd("colorscheme tokyodark")
+require('monokai').setup { palette = require('monokai').pro }
 
 -- vim.o.background = "dark" -- or "light" for light mode
 -- vim.cmd([[colorscheme gruvbox]])
