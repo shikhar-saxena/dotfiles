@@ -3,6 +3,11 @@ kazam_codec() {
     rm "$1"
 }
 
+yt-music() {
+    cd ~/Music
+    yt-dlp "$1" -x --audio-format=mp3
+}
+
 pd() {
   pandoc "$1" -o "$2" --metadata-file="$HOME/pandoc.yaml" -H "$HOME/pandoc.tex" --pdf-engine=xelatex;
 }

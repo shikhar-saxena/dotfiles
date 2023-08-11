@@ -25,8 +25,6 @@ require('packer').startup(function(use)
     },
   }
 
-  use 'voldikss/vim-floaterm'
-
   use 'jose-elias-alvarez/null-ls.nvim'
 
   -- use 'untitled-ai/jupyter_ascending.vim'
@@ -40,17 +38,14 @@ require('packer').startup(function(use)
   -- }
   -- use 'bfredl/nvim-ipy'
 
-  -- use {
-  --   "zbirenbaum/copilot.lua",
-  --   cmd = "Copilot",
-  --   event = "InsertEnter",
-  --   config = function()
-  --     require("copilot").setup({
-  --       suggestion = { enabled = false },
-  --       panel = { enabled = false },
-  --     })
-  --   end
-  -- }
+  use {
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = "InsertEnter",
+    config = function()
+      require("copilot").setup({})
+    end
+  }
 
   use 'skywind3000/asyncrun.vim'
 
@@ -112,6 +107,7 @@ require('packer').startup(function(use)
   use({ 'projekt0n/github-nvim-theme', tag = 'v0.0.7' })
   use { "ellisonleao/gruvbox.nvim" }
   -- use 'tiagovla/tokyodark.nvim'
+  use 'navarasu/onedark.nvim'
   use "folke/tokyonight.nvim"
 
   use 'nvim-lualine/lualine.nvim'           -- Fancier statusline
@@ -240,7 +236,6 @@ vim.opt.foldenable = false
 ------------------------------
 
 
--- github theme
 -- require("github-theme").setup({
 --   theme_style = "dark_default"
 -- })
@@ -254,11 +249,15 @@ vim.opt.foldenable = false
 -- })
 -- vim.cmd [[colorscheme tokyonight-night]]
 
-require('monokai').setup { palette = require('monokai').pro }
+-- require('monokai').setup { palette = require('monokai').pro }
 
 -- vim.o.background = "dark" -- or "light" for light mode
 -- vim.cmd([[colorscheme gruvbox]])
 
+require('onedark').setup {
+    style = 'darker'
+}
+require('onedark').load()
 
 -- autopair
 -- require("nvim-autopairs").setup()
@@ -267,7 +266,7 @@ require('monokai').setup { palette = require('monokai').pro }
 -- See `:help lualine.txt`
 require('lualine').setup {
   options = {
-    icons_enabled = false,
+    icons_enabled = true,
     -- theme = 'github_dark_default',
     component_separators = '|',
     section_separators = '',
@@ -372,7 +371,7 @@ vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { de
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
   ensure_installed = { 'c', 'cpp', 'lua', 'python', 'help', 'vim', 'r', 'latex' },
-
+  ignore_install = { "help" },
   highlight = { enable = true },
   indent = { enable = true, disable = { 'python' } },
   incremental_selection = {
@@ -626,7 +625,7 @@ cmp.setup {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
     { name = 'emoji' },
-    -- { name = 'copilot'},
+    { name = 'copilot'},
   },
 }
 
@@ -678,6 +677,7 @@ null_ls.setup({
     null_ls.builtins.formatting.black,
     null_ls.builtins.code_actions.gitsigns,
     null_ls.builtins.formatting.latexindent,
+    -- null_ls.builtins.diagnostics.vale,
     -- null_ls.builtins.completion.luasnip,
   },
 })

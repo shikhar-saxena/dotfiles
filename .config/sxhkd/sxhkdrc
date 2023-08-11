@@ -29,6 +29,8 @@ super + shift + r
 	killall sxhkd; killall dunst; bspc wm -r
 
 # close and kill
+super + shift + o
+	reboot
 # super + {_,shift + }w
 	# bspc node -{c,k}
 super + shift + w
@@ -136,7 +138,9 @@ super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
 super + slash 
-  betterlockscreen -l dim --off 120
+  betterlockscreen -l dim 
+
+# --off 120 -u /home/shikhar/Pictures/Wallpapers/idontwannabe.png 
 
 #
 # Audio things
