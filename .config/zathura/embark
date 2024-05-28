@@ -34,4 +34,3 @@ set render-loading-fg               "#CBE3E7"
 
 set recolor-lightcolor              "#1E1C31"
 set recolor-darkcolor               "#CBE3E7"
-set recolor                         "true"

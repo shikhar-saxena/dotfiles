@@ -1,7 +1,12 @@
 set synctex true
 set synctex-editor-command "nvr --remote-silent +%{line} %{input}"
 
-include cake_zathura 
+set adjust_window width
+
+map t toggle_index
+
+include tokyonightstorm 
+set recolor "true"
 # set sandbox none
 # set window-title-basename true
 set selection-clipboard "clipboard"
@@ -10,7 +15,7 @@ set selection-clipboard "clipboard"
 
 # map i recolor
 
-set guioptions none
+# set guioptions none
 
 # set scroll-page-aware "true"
 # set scroll-full-overlap 0.01

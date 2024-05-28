@@ -1,15 +1,16 @@
 #!/bin/sh
 
 # Alias for directories
-alias 5="cd ~/sem5"
-alias 4="cd ~/sem4"
-alias 6="cd ~/sem6"
-alias 7="cd ~/sem7"
-alias r="cd ~/research"
+for num in {5..8}; do
+  alias $num="cd ~/sem$num"
+done
+
 alias d="cd ~/Downloads"
 
 # Alias for commands
-alias n="nemo ."
+alias r="ranger"
+alias py="python3"
+alias n="nemo . &"
 alias l="ls"
 alias z="zathura"
 alias jl="jupyter-lab"

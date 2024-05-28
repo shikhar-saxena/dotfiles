@@ -1,5 +1,5 @@
 configuration {
-    font: "FiraCode Nerd Font 14";
+    font: "DM Mono 13";
     line-margin: 10;
 
     modi: "drun,run";

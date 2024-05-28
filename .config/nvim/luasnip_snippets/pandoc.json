@@ -1,18 +1,4 @@
 {
-  "$": {
-    "prefix": "$",
-    "description": "Inline Math",
-    "body": "\\$$1\\$$0"
-  },
-  "$$": {
-    "prefix": "$$",
-    "description": "Math",
-    "body": [
-      "\\$\\$",
-      "$1",
-      "\\$\\$ $0"
-    ]
-  },
   "mt": {
     "prefix": "mt",
     "description": "Make Title",
@@ -38,17 +24,17 @@
   "d": {
     "prefix": "d",
     "description": "mathbb",
-    "body": "\\mathbb{$1\\}$0"
+    "body": "\\mathbb{$1\\}"
   },
   "c": {
     "prefix": "c",
     "description": "Caligraphy",
-    "body": "\\mathcal{$1\\}$0"
+    "body": "\\mathcal{$1\\}"
   },
   "u": {
     "prefix": "u",
     "description": "underline",
-    "body": "\\underline{$1\\}$0"
+    "body": "\\underline{$1\\}"
   },
   "/": {
     "prefix": "/",
@@ -79,9 +65,8 @@
     "prefix": "acf",
     "description": "add new class description (full)",
     "body": [
-      "- Class-${1}",
-      "  - [${1}-md](Class-${1}/${CURRENT_DATE}-${CURRENT_MONTH}.md)",
-      "  - [${1}-pdf](file:Class-${1}/${CURRENT_DATE}-${CURRENT_MONTH}.pdf)"
+      "- [Class-${1}](file:Class-${1}/${CURRENT_DATE}-${CURRENT_MONTH}.pdf)",
+      "  - [${1}-md](Class-${1}/${CURRENT_DATE}-${CURRENT_MONTH}.md)"
     ]
   }
 }
