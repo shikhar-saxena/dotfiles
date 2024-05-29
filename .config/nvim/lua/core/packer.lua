@@ -25,7 +25,13 @@ require("packer").startup(function(use)
 		},
 	})
 
-	use("jose-elias-alvarez/null-ls.nvim")
+	-- use("jose-elias-alvarez/null-ls.nvim")
+
+	-- Formatter
+	use("stevearc/conform.nvim")
+
+	-- Linter
+	use("mfussenegger/nvim-lint")
 
 	-- use 'jbyuki/instant.nvim'
 

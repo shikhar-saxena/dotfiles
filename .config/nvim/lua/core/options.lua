@@ -1,5 +1,8 @@
 local opt = vim.opt
 
+-- Don't show the mode, since it's already in the status line
+opt.showmode = false
+
 opt.autoread = true
 
 -- Set highlight on search
