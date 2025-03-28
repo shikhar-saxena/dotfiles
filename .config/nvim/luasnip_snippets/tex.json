@@ -17,15 +17,6 @@
       "\\end{frame}"
     ]
   },
-  "$$": {
-    "prefix": "$$",
-    "description": "Math",
-    "body": [
-      "\\[",
-      "$1",
-      "\\]"
-    ]
-  },
   "/": {
     "prefix": "/",
     "description": "Fraction",
@@ -43,7 +34,7 @@
   },
   "d": {
     "prefix": "d",
-    "description": "idk",
+    "description": "mathbb",
     "body": "\\mathbb{$1\\}$0"
   },
   "i": {

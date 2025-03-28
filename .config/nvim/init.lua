@@ -1,20 +1,165 @@
-require("core.packer")
+-- Install packer
+local install_path = vim.fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+local is_bootstrap = false
+if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
+	is_bootstrap = true
+	vim.fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
+	vim.cmd([[packadd packer.nvim]])
+end
+
+require("packer").startup(function(use)
+	use("wbthomason/packer.nvim")
+
+	use({ -- LSP Configuration & Plugins
+		"neovim/nvim-lspconfig",
+		requires = {
+			-- Automatically install LSPs to stdpath for neovim
+			"williamboman/mason.nvim",
+			"williamboman/mason-lspconfig.nvim",
+
+			-- Useful status updates for LSP
+			"j-hui/fidget.nvim",
+
+			-- Additional lua configuration, makes nvim stuff amazing
+			"folke/neodev.nvim",
+		},
+	})
+
+	-- Formatter
+	use("stevearc/conform.nvim")
+
+	-- Linter
+	use("mfussenegger/nvim-lint")
+
+	-- use 'jbyuki/instant.nvim'
+
+	-- use({
+	-- 	"zbirenbaum/copilot.lua",
+	-- 	cmd = "Copilot",
+	-- 	event = "InsertEnter",
+	-- 	config = function()
+	-- 		require("copilot").setup({
+	-- 			suggestion = {
+	-- 				auto_trigger = false,
+	-- 			},
+	-- 		})
+	-- 	end,
+	-- })
+	-- use({
+	-- 	"zbirenbaum/copilot-cmp",
+	-- 	after = {
+	-- 		"copilot.lua",
+	-- 		"nvim-cmp",
+	-- 	},
+	-- 	config = function()
+	-- 		require("copilot_cmp").setup()
+	-- 	end,
+	-- })
+
+	use("skywind3000/asyncrun.vim")
+
+	use({ -- Autocompletion
+		"hrsh7th/nvim-cmp",
+		requires = {
+			"hrsh7th/cmp-nvim-lsp",
+			"L3MON4D3/LuaSnip",
+			"saadparwaiz1/cmp_luasnip",
+			"hrsh7th/cmp-emoji",
+			"hamzashezad/cmp-bibtex",
+		},
+	})
+
+	use("nvim-tree/nvim-tree.lua")
+
+	use({ -- Highlight, edit, and navigate code
+		"nvim-treesitter/nvim-treesitter",
+		run = function()
+			pcall(require("nvim-treesitter.install").update({ with_sync = true }))
+		end,
+	})
+
+	use({ -- Additional text objects via treesitter
+		"nvim-treesitter/nvim-treesitter-textobjects",
+		after = "nvim-treesitter",
+	})
+
+	-- Git related plugins
+	-- use 'tpope/vim-fugitive'
+	-- use 'tpope/vim-rhubarb'
+	use("lewis6991/gitsigns.nvim")
+
+	-- csv
+	use("chrisbra/csv.vim")
+
+	-- wiki.vim
+	use("lervag/wiki.vim")
+
+	-- Latex and Pandoc
+	use("lervag/vimtex")
+	use("vim-pandoc/vim-pandoc-syntax")
+	-- use 'vim-pandoc/vim-pandoc'
+
+	-- Theme
+	use("norcalli/nvim-colorizer.lua")
+
+	use({ "projekt0n/github-nvim-theme" })
+	use({ "embark-theme/vim", as = "embark" })
+	use("olivercederborg/poimandres.nvim")
+
+	use("nvim-lualine/lualine.nvim") -- Fancier statusline
+	use({ "lukas-reineke/indent-blankline.nvim", tag = "v2.20.8" }) -- Add indentation guides even on blank lines
+	use("numToStr/Comment.nvim") -- "gc" to comment visual regions/lines
+	use("tpope/vim-sleuth") -- Detect tabstop and shiftwidth automatically
+
+	-- Fuzzy Finder (files, lsp, etc)
+	use({ "nvim-telescope/telescope.nvim", branch = "0.1.x", requires = { "nvim-lua/plenary.nvim" } })
+
+	-- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
+	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make", cond = vim.fn.executable("make") == 1 })
+
+	-- Add custom plugins to packer from ~/.config/nvim/lua/custom/plugins.lua
+	local has_plugins, plugins = pcall(require, "custom.plugins")
+	if has_plugins then
+		plugins(use)
+	end
+
+	if is_bootstrap then
+		require("packer").sync()
+	end
+end)
+
+-- When we are bootstrapping a configuration, it doesn't
+-- make sense to execute the rest of the init.lua.
+--
+-- You'll need to restart nvim, and then it will work.
+if is_bootstrap then
+	print("==================================")
+	print("    Plugins are being installed")
+	print("    Wait until Packer completes,")
+	print("       then restart nvim")
+	print("==================================")
+	return
+end
+
+-- Automatically source and re-compile packer whenever you save this init.lua
+local packer_group = vim.api.nvim_create_augroup("Packer", { clear = true })
+vim.api.nvim_create_autocmd("BufWritePost", {
+	command = "source <afile> | silent! LspStop | silent! LspStart | PackerCompile",
+	group = packer_group,
+	pattern = vim.fn.expand("$MYVIMRC"),
+})
+
+-- [[ Options and Keymaps ]]
 require("core.options")
 require("core.keymaps")
 
 -- [[ Colorscheme ]]
-vim.cmd("colorscheme embark")
+vim.cmd("colorscheme github_dark_default")
 
 -- [[ Plugins ]]
 
--- to use jk and jj to exit insert mode
-require("better_escape").setup()
-
 -- comment
 require("Comment").setup()
-
--- autopair punctuation symbols
-require("nvim-autopairs").setup()
 
 -- shows colors on hexcodes
 require("colorizer").setup()
@@ -25,6 +170,7 @@ require("lualine").setup({
 		icons_enabled = true,
 		component_separators = "|",
 		section_separators = "",
+		theme = "powerline_dark",
 	},
 })
 
@@ -151,13 +297,13 @@ capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 --  Add any additional override configuration in the following tables. They will be passed to
 --  the `settings` field of the server config. You must look up that documentation yourself.
 local servers = {
-	-- clangd = {},
+	clangd = {},
 	-- gopls = {},
 	-- ltex = {},
 	-- pyright = {},
 	-- rust_analyzer = {},
 	-- tsserver = {},
-
+	textlsp = {},
 	lua_ls = {
 		Lua = {
 			workspace = { checkThirdParty = false },
@@ -205,6 +351,14 @@ require("conform").setup({
 	formatters_by_ft = {
 		lua = { "stylua" },
 		python = { "black" },
+		bibtex = { "bibtex-tidy" },
+		cpp = { "clang_format" },
+		javascript = { "prettier" },
+		css = { "prettier" },
+		json = { "prettier" },
+		typescript = { "prettier" },
+		html = { "prettier" },
+		typst = { "typstfmt" },
 	},
 	-- formatters = {
 	-- 	black = {
@@ -236,9 +390,9 @@ require("nvim-treesitter.install").prefer_git = true
 require("nvim-treesitter.configs").setup({
 	-- Add languages to be installed here that you want installed for treesitter
 	ensure_installed = { "c", "cpp", "lua", "python", "vim", "vimdoc" },
-	ignore_install = {},
-	auto_install = true,
-	highlight = { enable = true },
+	ignore_install = { "markdown" },
+	-- auto_install = true,
+	-- highlight = { enable = true },
 	indent = { enable = true, disable = { "python" } },
 	incremental_selection = {
 		enable = true,
@@ -334,9 +488,10 @@ cmp.setup({
 	}),
 	sources = {
 		{ name = "nvim_lsp" },
+		{ name = "tinymist" },
 		{ name = "luasnip" },
 		{ name = "emoji" },
-		-- { name = 'copilot' },
+		{ name = "bibtex" },
 	},
 })
 
@@ -387,23 +542,23 @@ vim.g.vimtex_view_general_viewer = "okular"
 vim.g.vimtex_fold_enabled = 0
 
 -- Pandoc
-local syntax_pandoc = function()
-	vim.o.filetype = "pandoc.markdown"
-end
+-- local syntax_pandoc = function()
+-- 	vim.o.filetype = "pandoc.markdown"
+-- end
+--
+-- local au_pandoc = vim.api.nvim_create_augroup("pandoc_syntax", { clear = true })
+-- vim.api.nvim_create_autocmd({ "BufNewFile", "BufFilePre", "BufRead" }, {
+-- 	pattern = { "*.md" },
+-- 	callback = syntax_pandoc,
+-- 	group = au_pandoc,
+-- })
 
-local au_pandoc = vim.api.nvim_create_augroup("pandoc_syntax", { clear = true })
-vim.api.nvim_create_autocmd({ "BufNewFile", "BufFilePre", "BufRead" }, {
-	pattern = { "*.md" },
-	callback = syntax_pandoc,
-	group = au_pandoc,
-})
-
-vim.keymap.set(
-	"n",
-	"<C-s>",
-	"<Esc>:w<CR>:AsyncRun pandoc -i '%' -o '%:r.pdf' --pdf-engine xelatex --metadata-file=$HOME/pandoc.yaml -H $HOME/pandoc.tex<CR><CR>",
-	{ noremap = true }
-)
+-- vim.keymap.set(
+-- 	"n",
+-- 	"<C-s>",
+-- 	"<Esc>:w<CR>:AsyncRun pandoc -i '%' -o '%:r.pdf' --pdf-engine xelatex --metadata-file=$HOME/pandoc.yaml -H $HOME/pandoc.tex<CR><CR>",
+-- 	{ noremap = true }
+-- )
 
 -- wiki.vim
 vim.g.wiki_root = "~"
@@ -411,6 +566,19 @@ vim.g.wiki_filetypes = { "md" }
 vim.g.wiki_link_extension = ".md"
 vim.g.wiki_viewer = { _ = "zathura" }
 vim.g.wiki_link_toggle_on_follow = 0
+
+-- conform.nvim
+vim.api.nvim_create_user_command("Format", function(args)
+	local range = nil
+	if args.count ~= -1 then
+		local end_line = vim.api.nvim_buf_get_lines(0, args.line2 - 1, args.line2, true)[1]
+		range = {
+			start = { args.line1, 0 },
+			["end"] = { args.line2, end_line:len() },
+		}
+	end
+	require("conform").format({ async = true, lsp_format = "fallback", range = range })
+end, { range = true })
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

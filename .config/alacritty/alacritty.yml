@@ -1,3 +1,6 @@
+env:
+  WINIT_X11_SCALE_FACTOR: "1.5"
+
 window:
   #decorations: None 
   padding:
@@ -6,29 +9,29 @@ window:
   class:
     instance: Alacritty
     general: Alacritty
-  opacity: 0.98
+  opacity: 0.92
 
 scrolling:
   history: 10000
   multiplier: 3
 
 font:
-  size: 9.5
+  size: 9 
   normal:
-    family: Iosevka 
-    style: Regular
+    family: Cascadia Code
+    style: SemiLight 
   bold:
-    family: Iosevka 
-    style: Medium 
+    family: Cascadia Code
+    style: Regular
   italic:
-    family: Iosevka 
-    style: Italic
+    family: Cascadia Code
+    style: SemiLight Italic
   bold_italic:
-    family: Iosevka 
-    style: Medium Italic
+    family: Cascadia Code
+    style: Italic
   offset:
     x: 0
-    y: 5
+    y: 6
 
 draw_bold_text_with_bright_colors: true
 
@@ -46,8 +49,5 @@ key_bindings:
   - { key: T, mods: Control|Shift, action: SpawnNewInstance }
   - { key: W, mods: Control|Shift, action: Quit }
 
-
-# colors: *embark
-
 import:
-  - ~/.config/alacritty/themes/embark.yml
+  - ~/.config/alacritty/themes/github_dark_default.yml

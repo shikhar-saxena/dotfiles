@@ -5,47 +5,16 @@
     "snippets": [
       {
         "language": [
-          "cpp"
-        ],
-        "path": "./cpp.json"
-      },
-      {
-        "language": [
           "all"
         ],
         "path": "./all.json"
       },
       {
         "language": [
-          "pandoc"
-        ],
-        "path": "./pandoc.json"
-      },
-      {
-        "language": [
-          "lua"
-        ],
-        "path": "./lua.json"
-      },
-      {
-        "language": [
-          "vim"
-        ],
-        "path": "./vim.json"
-      },
-      {
-        "language": [
-          "c",
-          "cpp"
-        ],
-        "path": "./c.json"
-      },
-      {
-        "language": [
           "markdown",
           "pandoc"
         ],
-        "path": "./markdown.json"
+        "path": "./pandoc.json"
       },
       {
         "language": [

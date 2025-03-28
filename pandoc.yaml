@@ -18,7 +18,7 @@ toccolor: red
 linestretch: 1 # Setspace package
 # numbersections: true
 # fontenc: T1
-fontsize: 12pt
+fontsize: 11pt
 # subparagraph: yes
 graphicx: true
 # mainfont: Libertinus Serif 

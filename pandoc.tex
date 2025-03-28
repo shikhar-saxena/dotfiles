@@ -1,11 +1,10 @@
 % \usepackage{titlesec}
-\usepackage{titling}
-\usepackage[most]{tcolorbox}
-\usepackage{physics}
+% \usepackage{titling}
+\usepackage{tcolorbox}
 \usepackage[ruled]{algorithm2e}
 
-\usepackage{tikz}
-\usetikzlibrary{automata,arrows,positioning,calc}
+% \usepackage{tikz}
+% \usetikzlibrary{automata,arrows,positioning,calc}
 
 % \setmainfont{Libertinus Sans}
 % \setmathrm{Fira Math}
@@ -17,8 +16,8 @@
 % \titleformat*{\subsubsection}{\large\headingfont}
 % \renewcommand{\maketitlehooka}{\headingfont}
 
-% \usepackage{sectsty}
-% \allsectionsfont{\sffamily}
+\usepackage{sectsty}
+\allsectionsfont{\sffamily}
 
 \usepackage{enumitem}
 \setlist[itemize,1]{label=$\circ$}
@@ -30,7 +29,7 @@
 % \renewcommand{\familydefault}{\sfdefault}
 % \usepackage{cmbright}
 % \renewcommand*\rmdefault{cmss}
-% \renewcommand*\ttdefault{cmtt}
+\renewcommand*\ttdefault{cmtt}
 % \usepackage{isomath}
 
 \usepackage{amsthm, amssymb}
@@ -47,32 +46,31 @@
 % \setlength{\parindent}{15pt}
 
 
-\usepackage{tocloft}
-%\renewcommand\cftsecfont{\normalfont\bfseries}
-%\renewcommand\cftsubsecfont{\normalfont}
-%\renewcommand\cftsubsubsecfont{\normalfont\bfseries}
+% \usepackage{tocloft}
+% %\renewcommand\cftsecfont{\normalfont\bfseries}
+% %\renewcommand\cftsubsecfont{\normalfont}
+% %\renewcommand\cftsubsubsecfont{\normalfont\bfseries}
+% \renewcommand{\cftsecdotsep}{2}
+%
+% \renewcommand{\cftsecleader}{\color{red}       \cftdotfill{\cftsecdotsep}}
+% \renewcommand{\cftsubsecleader}{\color{red}     \cftdotfill{\cftsecdotsep}}
+% \renewcommand{\cftsubsubsecleader}{\color{red}     \cftdotfill{\cftsecdotsep}}
 
-\renewcommand{\cftsecdotsep}{2}
-
-\renewcommand{\cftsecleader}{\color{red}       \cftdotfill{\cftsecdotsep}}
-\renewcommand{\cftsubsecleader}{\color{red}     \cftdotfill{\cftsecdotsep}}
-\renewcommand{\cftsubsubsecleader}{\color{red}     \cftdotfill{\cftsecdotsep}}
-
-\usepackage{fancyhdr}
-\pagestyle{fancy}
-% \fancyhf{}
-% \fancyhead[L]{\thesection}
-% \fancyhead[R]{\ass}
-% \fancyfoot[C]{\thepage}
-\renewcommand{\footrulewidth}{0.4pt}
-\renewcommand{\headrulewidth}{0.4pt}
-
-\fancypagestyle{plain}{%  the preset of fancyhdr 
-  % \fancyhf{}
-\fancyhead[L]{\thetitle}
-% \fancyhead[R]{\ass}
-% \fancyfoot[C]{\thepage}
-}
+% \usepackage{fancyhdr}
+% \pagestyle{fancy}
+% % \fancyhf{}
+% % \fancyhead[L]{\thesection}
+% % \fancyhead[R]{\ass}
+% % \fancyfoot[C]{\thepage}
+% \renewcommand{\footrulewidth}{0.4pt}
+% \renewcommand{\headrulewidth}{0.4pt}
+%
+% \fancypagestyle{plain}{%  the preset of fancyhdr 
+%   % \fancyhf{}
+% \fancyhead[L]{\thetitle}
+% % \fancyhead[R]{\ass}
+% % \fancyfoot[C]{\thepage}
+% }
 
 
 \newcommand{\ra}{\rightarrow}
@@ -87,3 +85,5 @@
 
 
 \DeclareMathOperator{\diag}{diag}
+
+\input{/home/shikhar/math_commands.tex}

@@ -3,10 +3,13 @@ set synctex-editor-command "nvr --remote-silent +%{line} %{input}"
 
 set adjust_window width
 
+map w adjust_window width
 map t toggle_index
 
-include tokyonightstorm 
+# include embark 
+include cake_zathura
 set recolor "true"
+
 # set sandbox none
 # set window-title-basename true
 set selection-clipboard "clipboard"

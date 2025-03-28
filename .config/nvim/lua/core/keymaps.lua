@@ -18,6 +18,10 @@ keymap.set("n", "<C-H>", "<C-W><C-H>", { noremap = true })
 keymap.set("n", "<C-K>", "<C-W><C-K>", { noremap = true })
 keymap.set("n", "<C-L>", "<C-W><C-L>", { noremap = true })
 
+-- dd doesn't change the unnamed register
+-- keymap.set({ "n", "v" }, "d", '"_d', { noremap = true })
+-- keymap.set("n", "dd", '"_dd', { noremap = true })
+
 keymap.set("n", "x", '"_x')
 
 -- increment and decrement numbers
