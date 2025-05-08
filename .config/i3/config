@@ -77,9 +77,9 @@ floating_modifier $mod
 bindsym $mod+Return exec alacritty
 
 # kill focused window
-bindsym $mod+Shift+w kill
+# bindsym $mod+Shift+w kill
 bindsym $mod+q kill
-bindsym Ctrl+Shift+w kill
+# bindsym Ctrl+Shift+w kill
 
 # start dmenu (a program launcher)
 bindsym $mod+u exec killall anydesk
@@ -88,8 +88,8 @@ bindsym $mod+y exec killall anydesk
 bindsym $mod+d exec rofi -show 
 
 # greenclip
-exec --no-startup-id greenclip daemon>/dev/null
-bindsym $mod+x exec --no-startup-id rofi -modi "clipboard:greenclip print" -show clipboard
+# exec --no-startup-id greenclip daemon>/dev/null
+# bindsym $mod+x exec --no-startup-id rofi -modi "clipboard:greenclip print" -show clipboard
 
 
 # dmenu_run
