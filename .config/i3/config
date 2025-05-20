@@ -82,9 +82,6 @@ bindsym $mod+q kill
 # bindsym Ctrl+Shift+w kill
 
 # start dmenu (a program launcher)
-bindsym $mod+u exec killall anydesk
-bindsym $mod+y exec killall anydesk
-
 bindsym $mod+d exec rofi -show 
 
 # greenclip
