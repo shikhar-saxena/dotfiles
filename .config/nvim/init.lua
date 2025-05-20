@@ -33,28 +33,28 @@ require("packer").startup(function(use)
 
 	-- use 'jbyuki/instant.nvim'
 
-	-- use({
-	-- 	"zbirenbaum/copilot.lua",
-	-- 	cmd = "Copilot",
-	-- 	event = "InsertEnter",
-	-- 	config = function()
-	-- 		require("copilot").setup({
-	-- 			suggestion = {
-	-- 				auto_trigger = false,
-	-- 			},
-	-- 		})
-	-- 	end,
-	-- })
-	-- use({
-	-- 	"zbirenbaum/copilot-cmp",
-	-- 	after = {
-	-- 		"copilot.lua",
-	-- 		"nvim-cmp",
-	-- 	},
-	-- 	config = function()
-	-- 		require("copilot_cmp").setup()
-	-- 	end,
-	-- })
+	use({
+		"zbirenbaum/copilot.lua",
+		cmd = "Copilot",
+		event = "InsertEnter",
+		config = function()
+			require("copilot").setup({
+				suggestion = {
+					auto_trigger = false,
+				},
+			})
+		end,
+	})
+	use({
+		"zbirenbaum/copilot-cmp",
+		after = {
+			"copilot.lua",
+			"nvim-cmp",
+		},
+		config = function()
+			require("copilot_cmp").setup()
+		end,
+	})
 
 	use("skywind3000/asyncrun.vim")
 
@@ -98,7 +98,6 @@ require("packer").startup(function(use)
 	use("lervag/vimtex")
 	use("vim-pandoc/vim-pandoc-syntax")
 	-- use 'vim-pandoc/vim-pandoc'
-
 	-- Theme
 	use("norcalli/nvim-colorizer.lua")
 
@@ -297,7 +296,7 @@ capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 --  Add any additional override configuration in the following tables. They will be passed to
 --  the `settings` field of the server config. You must look up that documentation yourself.
 local servers = {
-	clangd = {},
+	-- clangd = {},
 	-- gopls = {},
 	-- ltex = {},
 	-- pyright = {},
@@ -351,8 +350,9 @@ require("conform").setup({
 	formatters_by_ft = {
 		lua = { "stylua" },
 		python = { "black" },
+		-- markdown = { "glow" },
 		bibtex = { "bibtex-tidy" },
-		cpp = { "clang_format" },
+		-- cpp = { "clang_format" },
 		javascript = { "prettier" },
 		css = { "prettier" },
 		json = { "prettier" },
@@ -370,6 +370,7 @@ require("conform").setup({
 -- Linter
 require("lint").linters_by_ft = {
 	python = { "ruff" },
+	markdown = { "vale" },
 }
 
 vim.api.nvim_create_autocmd({ "BufWritePost" }, {
@@ -389,7 +390,7 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 require("nvim-treesitter.install").prefer_git = true
 require("nvim-treesitter.configs").setup({
 	-- Add languages to be installed here that you want installed for treesitter
-	ensure_installed = { "c", "cpp", "lua", "python", "vim", "vimdoc" },
+	ensure_installed = { "lua", "python", "vim", "vimdoc" },
 	ignore_install = { "markdown" },
 	-- auto_install = true,
 	-- highlight = { enable = true },
@@ -542,16 +543,16 @@ vim.g.vimtex_view_general_viewer = "okular"
 vim.g.vimtex_fold_enabled = 0
 
 -- Pandoc
--- local syntax_pandoc = function()
--- 	vim.o.filetype = "pandoc.markdown"
--- end
---
--- local au_pandoc = vim.api.nvim_create_augroup("pandoc_syntax", { clear = true })
--- vim.api.nvim_create_autocmd({ "BufNewFile", "BufFilePre", "BufRead" }, {
--- 	pattern = { "*.md" },
--- 	callback = syntax_pandoc,
--- 	group = au_pandoc,
--- })
+local syntax_pandoc = function()
+	vim.o.filetype = "pandoc.markdown"
+end
+
+local au_pandoc = vim.api.nvim_create_augroup("pandoc_syntax", { clear = true })
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufFilePre", "BufRead" }, {
+	pattern = { "*.md" },
+	callback = syntax_pandoc,
+	group = au_pandoc,
+})
 
 -- vim.keymap.set(
 -- 	"n",
